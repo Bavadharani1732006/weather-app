@@ -10,7 +10,7 @@ async function getWeather() {
         return;
     }
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},IN&units=metric&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
     try {
         const response = await fetch(url);
@@ -81,6 +81,3 @@ function displayWeather(data) {
 function toggleDarkMode() {
     document.body.classList.toggle("dark");
 }
-
-
-

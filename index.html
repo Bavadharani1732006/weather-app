@@ -1,92 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Weather App</title>
-
-<style>
-body{
-margin:0;
-font-family:Segoe UI;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#89f7fe,#66a6ff);
-transition:0.5s;
-}
-
-.dark{
-background:linear-gradient(135deg,#141e30,#243b55);
-}
-
-.container{
-background:rgba(255,255,255,0.2);
-padding:30px;
-border-radius:20px;
-width:350px;
-text-align:center;
-color:white;
-}
-
-input{
-width:80%;
-padding:10px;
-border:none;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-button{
-padding:8px 12px;
-border:none;
-border-radius:10px;
-margin:5px;
-cursor:pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Next Level Weather App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
-<h2>Weather App</h2>
+    <div class="container">
 
-<input type="text" id="city" placeholder="Enter city">
-<br>
-<button onclick="getWeather()">Search</button>
-<button onclick="toggleDark()">Dark Mode</button>
+        <h2>Weather App</h2>
 
-<div id="result"></div>
-</div>
+        <input type="text" id="city" placeholder="Enter city">
+        <br>
+        <button onclick="getWeather()">Search</button>
+        <button onclick="getLocationWeather()">Use My Location</button>
+        <button onclick="toggleDarkMode()">Dark Mode</button>
 
-<script>
+        <div id="result"></div>
 
-const apiKey="PASTE_YOUR_API_KEY_HERE";
+    </div>
 
-function getWeather(){
-const city=document.getElementById("city").value;
-
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-.then(res=>res.json())
-.then(data=>{
-if(data.cod!=200){
-document.getElementById("result").innerHTML="City not found";
-return;
-}
-
-document.getElementById("result").innerHTML=
-`<h3>${data.name}</h3>
-<p>Temp: ${data.main.temp}°C</p>
-<p>${data.weather[0].description}</p>`;
-});
-}
-
-function toggleDark(){
-document.body.classList.toggle("dark");
-}
-
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
+
+
